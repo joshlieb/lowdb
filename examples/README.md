@@ -33,7 +33,7 @@ const adapter = new LocalStorage('db')
 const db = new LowSync(adapter)
 
 db.read()
-db.data ||= { posts: [] }
+db.data ??= { posts: [] }
 
 db.data.posts.push({ title: 'lowdb' })
 
@@ -56,7 +56,7 @@ app.use(express.json())
 const adapter = new JSONFile('db.json')
 const db = new Low(adapter)
 await db.read()
-db.data ||= { posts: [] }
+db.data ??= { posts: [] }
 
 const { posts } = db.data
 
